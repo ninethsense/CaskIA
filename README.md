@@ -77,4 +77,6 @@ Invoke-RestMethod -Uri '<GITHUB_API_URL>' -Method Post -Headers @{ Authorization
 - Never commit `.env` to source control. Add it to `.gitignore` if you plan to commit.
 
 
+## Screenshots
 
+![Alt Text](public/assets/screenshot.jpg "Screenshot")
