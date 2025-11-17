@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>CaskIA — Kid-friendly Chat</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <div class="logo">
+          <img src="/assets/caskia.png" alt="CaskIA logo" class="logo-img" />
+          <span class="logo-text">CaskIA</span>
+        </div>
+        <div class="tag">is your friend!</div>
+      </header>
+
+      <main class="chat-area" id="chatArea">
+        <div class="messages" id="messages"></div>
+      </main>
+
+      <form id="chatForm" class="composer">
+        <input id="input" autocomplete="off" placeholder="Ask CaskIA something..." />
+        <button type="submit">Send</button>
+      </form>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

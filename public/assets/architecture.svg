@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="640" viewBox="0 0 1000 640">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2b6cb0" />
+    </marker>
+    <style>
+      .title { font: 700 18px/1.2 Helvetica, Arial; fill:#0b3b5b }
+      .label { font: 400 13px/1.2 Helvetica, Arial; fill:#0b3b5b }
+      .box { fill: #e8f4ff; stroke: #2b6cb0; stroke-width: 2; rx:10; ry:10 }
+      .small { font: 400 11px/1.2 Helvetica, Arial; fill:#08324a }
+      .muted { fill:#6b7280 }
+    </style>
+  </defs>
+
+  <rect x="16" y="16" width="968" height="608" rx="14" fill="#ffffff" stroke="#e6eef9" />
+  <text x="36" y="44" class="title">CaskIA — Architecture Overview</text>
+
+  <!-- Browser -->
+  <g transform="translate(48,88)">
+    <rect class="box" width="220" height="120"/>
+    <text x="16" y="30" class="label">Browser (Kid)</text>
+    <text x="16" y="54" class="small">public/index.html</text>
+    <text x="16" y="72" class="small">public/app.js</text>
+    <text x="16" y="92" class="small">renders UI, posts to /api/chat</text>
+  </g>
+
+  <!-- Frontend -> Backend arrow -->
+  <line x1="268" y1="148" x2="420" y2="148" stroke="#2b6cb0" stroke-width="3" marker-end="url(#arrow)" />
+  <text x="300" y="136" class="muted">HTTP POST /api/chat</text>
+
+  <!-- Backend -->
+  <g transform="translate(420,88)">
+    <rect class="box" width="260" height="160"/>
+    <text x="16" y="30" class="label">Backend (Express)</text>
+    <text x="16" y="54" class="small">server.js</text>
+    <text x="16" y="74" class="small">reads `.env` (token &amp; endpoint)</text>
+    <text x="16" y="94" class="small">in-memory conversations (cookie session)</text>
+    <text x="16" y="114" class="small">forwards messages to GitHub Models API</text>
+  </g>
+
+  <!-- Backend -> GitHub Models API arrow -->
+  <line x1="680" y1="148" x2="820" y2="148" stroke="#2b6cb0" stroke-width="3" marker-end="url(#arrow)" />
+  <text x="700" y="136" class="muted">POST { model, messages }</text>
+
+  <!-- GitHub Models API -->
+  <g transform="translate(820,88)">
+    <rect class="box" width="140" height="120"/>
+    <text x="12" y="34" class="label">GitHub Models API</text>
+    <text x="12" y="60" class="small">GITHUB_API_URL</text>
+    <text x="12" y="80" class="small">GITHUB_API_TOKEN (Bearer)</text>
+  </g>
+
+  <!-- Mock path -->
+  <g transform="translate(420,268)">
+    <rect x="0" y="0" width="540" height="80" rx="8" fill="#fff7ed" stroke="#f59e0b" />
+    <text x="12" y="26" class="label" style="fill:#92400e">Mock response</text>
+    <text x="12" y="48" class="small">If `GITHUB_API_URL` or token missing → server returns safe mock reply</text>
+  </g>
+
+  <!-- Session store (cookie) -->
+  <g transform="translate(48,220)">
+    <rect class="box" width="220" height="84"/>
+    <text x="16" y="34" class="label">Session</text>
+    <text x="16" y="56" class="small">cookie: sessionId → in-memory Map in server.js</text>
+  </g>
+
+  <!-- Notes -->
+  <text x="36" y="380" class="small">Notes:</text>
+  <text x="36" y="400" class="small">- Conversations are kept in memory per anonymous session (not persisted).</text>
+  <text x="36" y="418" class="small">- Client performs minor formatting (bold, lists) before rendering HTML.</text>
+  <text x="36" y="436" class="small">- Server logs non-OK API responses (status + body) to help debugging.</text>
+
+  <!-- Footer path -->
+  <text x="36" y="584" class="muted">File: docs/architecture.svg — update as needed</text>
+</svg>

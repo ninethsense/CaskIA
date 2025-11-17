@@ -1,0 +1,38 @@
+:root{
+  --blue: #1E90FF;
+  --light: #f5fbff;
+  --text: #1b2b3a;
+}
+*{box-sizing:border-box}
+body{font-family:Inter, system-ui, Arial, sans-serif;margin:0;background:var(--light);color:var(--text)}
+.app{max-width:720px;margin:24px auto;border-radius:12px;overflow:hidden;box-shadow:0 6px 30px rgba(30,144,255,0.12);background:white}
+.header{display:flex;align-items:center;gap:12px;padding:16px;background:linear-gradient(90deg,var(--blue),#4aa3ff);color:white}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-img{width:40px;height:40px;object-fit:cover;border-radius:8px;background:white}
+.logo-text{font-weight:800;font-size:20px;color:inherit}
+.tag{font-size:13px;opacity:0.95}
+.chat-area{height:60vh;padding:16px;overflow:auto}
+.messages{display:flex;flex-direction:column;gap:10px}
+.message{max-width:78%;padding:10px 14px;border-radius:12px;line-height:1.3}
+.message.bot{background:#eef7ff;color:#05314a;align-self:flex-start}
+.message.user{background:var(--blue);color:white;align-self:flex-end}
+.composer{display:flex;gap:8px;padding:12px;border-top:1px solid #eee}
+.composer input{flex:1;padding:10px 12px;border-radius:8px;border:1px solid #ddd}
+.composer button{background:var(--blue);border:none;color:white;padding:10px 14px;border-radius:8px;cursor:pointer}
+.composer button:active{transform:translateY(1px)}
+
+@media (max-width:600px){.app{margin:8px}}
+
+/* Full-page background image with 50% transparency.
+   Place your image at `public/assets/bg.png`. */
+body::before{
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url('/assets/caskia.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5;
+  z-index: -1;
+  pointer-events: none;
+}
